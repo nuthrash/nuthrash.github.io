@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<!-- http://jsbin.com/mixure/embed?html,console -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>WASM Test</title>
+</head>
+<body>
+  <script>
+    function fetchAndInstantiateWasm (url, imports) {
+      return fetch(url)
+      .then(res => {
+        if (res.ok)
+          return res.arrayBuffer();
+        throw new Error(`Unable to fetch Web Assembly file ${url}.`);
+      })
+      .then(bytes => WebAssembly.compile(bytes))
+      .then(module => WebAssembly.instantiate(module, imports || {}))
+      .then(instance => instance.exports);
+    }
+
+    fetchAndInstantiateWasm(
+      'https://rawgit.com/ArvinH/975d9090903254aa58d72d7e8b9f07ab/raw/'+
+      'e32c8c0fad5cf90b70ae803b21ee3e97e0f0685e/add10and20fromlog.wasm', {
+      env: {
+        consoleLog: num => console.log(num)
+      },
+      lib: {
+        log: num => console.log(num)
+      }
+    })
+    .then(m => {
+      m.add(5, 3)
+    });
+  </script>
+</body>
+</html>
