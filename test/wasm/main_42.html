@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<!--
+https://blog.techbridge.cc/2017/06/17/webassembly-js-future/
+http://jsbin.com/mixure/embed?html,console
+
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>WASM main  return 42 in log/console</title>
+</head>
+<body>
+  <script>
+    function invokeMainWasm (url, imports) {
+      var wasmModule = new WebAssembly.Module(wasmCode);
+      var wasmInstance = new WebAssembly.Instance(wasmModule, wasmImports);
+      log(wasmInstance.exports.main());
+    }
+
+    fetchAndInstantiateWasm(
+      'https://rawgit.com/ArvinH/975d9090903254aa58d72d7e8b9f07ab/raw/'+
+      'e32c8c0fad5cf90b70ae803b21ee3e97e0f0685e/add10and20fromlog.wasm', {
+      env: {
+        consoleLog: num => console.log(num)
+      },
+      lib: {
+        log: num => console.log(num)
+      }
+    })
+    .then(m => {
+      m.add(5, 3)
+    });
+  </script>
+  
+  Hello WebAssembly!!
+</body>
+</html>
