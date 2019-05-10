@@ -11,7 +11,6 @@
     <div id="app">Loading...</div>
 
     <!-- Start Single Page Apps for GitHub Pages -->
-	<!--
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // https://github.com/rafrex/spa-github-pages
@@ -28,9 +27,10 @@
         if (l.search) {
           var q = {};
           l.search.slice(1).split('&').forEach(function(v) {
-            var a = v.split('=');
-            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-          });
+                var a = v.split('=');
+                q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+            });
+			
           if (q.p !== undefined) {
             window.history.replaceState(null, null,
               l.pathname.slice(0, -1) + (q.p || '') +
@@ -41,11 +41,10 @@
         }
       }(window.location))
     </script>
-	-->
     <!-- End Single Page Apps for GitHub Pages -->
 
     <!-- Temporary polyfill for IE support -->
-    <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script> -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
 
     <script src="_framework/Blazor.Host.min.js" main="MicroApp.dll"></script>
 </body>
