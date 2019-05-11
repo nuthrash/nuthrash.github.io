@@ -43,6 +43,8 @@ For more details see [GitHub Flavored Markdown](https://guides.github.com/featur
 
 > *WARNING:* GitHub Pages sites are publicly available on the internet, even if their repositories are private. If you have sensitive data in your Page repository, you may want to remove it before publishing.
 
+- [GitHub Pages Helps](https://help.github.com/en#github-pages-basics)
+
 ## GitHub Pages Basics
 - [What is GitHub Pages?](https://help.github.com/en/articles/what-is-github-pages)
 - [Configuring a publishing source for GitHub Pages](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages)
